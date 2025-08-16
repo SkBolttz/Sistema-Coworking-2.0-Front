@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #6f2581;
+    --secondary-color: #8c728e;
+    --bg-color: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --placeholder-color: #999999;
+    --error-color: #e53935;
+    --border-color: #e0e0e0;
+    --success-color: #4CAF50;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.mainContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    padding-top: 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.titleAndButtonContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 2rem;
+}
+
+.formAndImageContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.formContainer {
+    background-color: var(--card-bg);
+    padding: 2.5rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease-in-out;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup label {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.inputGroup input[type="text"],
+.inputGroup select {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #f9fafb;
+    transition: all 0.3s ease;
+}
+
+.inputGroup input[type="text"]:focus,
+.inputGroup select:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(111, 37, 129, 0.2);
+    outline: none;
+}
+
+.checkboxGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.checkboxItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.checkboxItem label {
+    margin: 0;
+    font-weight: 400;
+}
+
+.imageContainer {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    min-height: 300px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.imageContainer:hover {
+    transform: translateY(-5px);
+}
+
+.stationImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.noImageText {
+    color: var(--placeholder-color);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.submitButton,
+.desativarButton,
+.ativarButton,
+.returnButton {
+    background: linear-gradient(45deg, #6f2581, #9d4edd);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submitButton:hover,
+.desativarButton:hover,
+.ativarButton:hover,
+.returnButton:hover {
+    transform: translateY(-2px);
+}
+
+.desativarButton {
+    background: #e53935;
+}
+
+.desativarButton:hover {
+    background: #d32f2f;
+}
+
+.ativarButton {
+    background: #388e3c;
+}
+
+.ativarButton:hover {
+    background: #2e7d32;
+}
+
+.returnButton {
+    background: none;
+    color: var(--primary-color);
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    position: absolute;
+    left: 0;
+}
+
+.returnButton svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.returnButton:hover svg {
+    transform: translateX(-5px);
+}
+
+.successMessage {
+    text-align: center;
+    color: green;
+    background-color: #ccffdb;
+    border: rgba(174, 0, 255, 0.336) solid 1px;
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+    font-weight: bold;
+}
+
+.errorMessage {
+    text-align: center;
+    color: #800000;
+    background-color: #ffcccc;
+    border: rgba(174, 0, 255, 0.336) solid 1px;
+    padding: 0.8rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    width: 100%;
+    font-weight: bold;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .formAndImageContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formContainer,
+    .imageContainer {
+        max-width: 100%;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .submitButton,
+    .desativarButton,
+    .ativarButton,
+    .returnButton {
+        width: 100%;
+    }
+
+    .titleAndButtonContainer {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .returnButton {
+        position: absolute;
+        left: 0;
+    }
+}

@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #6f2581;
+    --secondary-color: #8c728e;
+    --bg-color: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --placeholder-color: #999999;
+    --error-color: #e53935;
+    --border-color: #e0e0e0;
+    --success-color: #4CAF50;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.mainContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    padding-top: 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+}
+
+.titleAndButtonContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 2rem;
+}
+
+.formsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+    width: 1500px;
+    background-color: var(--card-bg);
+    padding: 3rem 3rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.formTitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.inputGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .inputGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.inputGroup label {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.inputGroup input[type="text"],
+.inputGroup input[type="tel"],
+.inputGroup input[type="email"],
+select {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: #f9fafb;
+    transition: all 0.3s ease;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus {
+    border-color: var(--primary-color);
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(111, 37, 129, 0.2);
+    outline: none;
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.submitButton,
+.desativarButton,
+.ativarButton,
+.returnButton {
+    background: linear-gradient(45deg, #6f2581, #9d4edd);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 40px;
+    margin: 20px;
+}
+
+.titleStep {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.submitButton:hover,
+.desativarButton:hover,
+.ativarButton:hover,
+.returnButton:hover {
+    transform: translateY(-2px);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.desativarButton {
+    background: #e53935;
+}
+
+.desativarButton:hover {
+    background: #d32f2f;
+}
+
+.ativarButton {
+    background: #388e3c;
+}
+
+.ativarButton:hover {
+    background: #2e7d32;
+}
+
+.returnButton {
+    background: none;
+    color: var(--primary-color);
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    position: absolute;
+    left: 0;
+}
+
+.returnButton svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.returnButton:hover svg {
+    transform: translateX(-5px);
+}
+
+.successMessage {
+    text-align: center;
+    color: var(--success-color);
+    background-color: #ccffdb;
+    border: rgba(174, 0, 255, 0.336) solid 1px;
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+    font-weight: bold;
+}
+
+.errorMessage {
+    text-align: center;
+    color: #800000;
+    background-color: #ffcccc;
+    border: rgba(174, 0, 255, 0.336) solid 1px;
+    padding: 0.8rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    width: 100%;
+    font-weight: bold;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 900;
+}
+
+.modalContainer {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px;
+    z-index: 1000;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.buttonVoltar {
+    background: #ccc;
+    color: #333;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.buttonVoltar:hover {
+    background: #b3b3b3;
+}
+
+.buttonSubmit {
+    background: linear-gradient(45deg, #6f2581, #9d4edd);
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.formSectionsWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.formContainer {
+    flex: 1;
+    min-width: 300px;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+@media (max-width: 768px) {
+    .formsContainer {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .formContainer {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .submitButton,
+    .desativarButton,
+    .ativarButton,
+    .returnButton {
+        width: 100%;
+    }
+
+    .titleAndButtonContainer {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .returnButton {
+        position: absolute;
+        left: 0;
+    }
+}

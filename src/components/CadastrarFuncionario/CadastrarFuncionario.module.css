@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --primary-color: #6f2581;
+  --secondary-color: #8c728e;
+  --bg-color: #f0f2f5;
+  --card-bg: #ffffff;
+  --text-color: #333333;
+  --text-light: #555555;
+  --border-color: #e0e0e0;
+  --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  padding-top: 90px;
+  min-height: calc(100vh - 150px);
+}
+
+.topBar {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.returnButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.returnButton svg {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+  transition: transform 0.3s ease;
+}
+
+.returnButton:hover svg {
+  transform: translateX(-5px);
+}
+
+.createButton {
+  background: linear-gradient(45deg, var(--primary-color), #9d4edd);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: var(--shadow-light);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: all 0.3s ease;
+}
+
+.createButton svg {
+  width: 24px;
+  height: 24px;
+}
+
+.createButton:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.controls {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.searchContainer {
+  flex: 1;
+  min-width: 200px;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--card-bg);
+  transition: all 0.3s ease;
+}
+
+.searchInput:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(111, 37, 129, 0.2);
+  outline: none;
+}
+
+.statusButtons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.statusButtons button {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.statusButtons button:hover {
+  background-color: var(--hover-bg-color);
+  color: var(--text-color);
+}
+
+.statusButtons button.activeFilter {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-light);
+}
+
+.tableContainer {
+  width: 100%;
+  max-width: 1200px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader th,
+.tableBody td {
+  padding: 1.2rem 2rem;
+  text-align: left;
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tableHeader th {
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tableHeader th:nth-child(1), .tableBody td:nth-child(1) { width: 5%; } 
+.tableHeader th:nth-child(2), .tableBody td:nth-child(2) { width: 25%; } 
+.tableHeader th:nth-child(3), .tableBody td:nth-child(3) { width: 30%; }
+.tableHeader th:nth-child(4), .tableBody td:nth-child(4) { width: 10%; } 
+.tableHeader th:nth-child(5), .tableBody td:nth-child(5) { width: 15%; } 
+
+.tableBody tr {
+  transition: background-color 0.2s ease;
+}
+
+.tableBody tr:last-child td {
+  border-bottom: none;
+}
+
+.statusActive {
+  color: #28a745;
+  font-weight: 600;
+  white-space: nowrap; 
+}
+
+.statusInactive {
+  color: #dc3545;
+  font-weight: 600;
+  white-space: nowrap; 
+}
+
+.buttonUpdate {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.buttonUpdate:hover {
+  background-color: #5c1f71;
+}
+
+.noResultsText,
+.loadingText,
+.errorText {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  margin: 4rem 0;
+}
+
+@media (max-width: 768px) {
+  .mainContainer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 80px;
+  }
+  .topBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .statusButtons {
+    justify-content: space-between;
+  }
+  .tableContainer {
+    overflow-x: auto;
+  }
+  .table {
+    white-space: nowrap;
+    width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainContainer {
+     padding-top: 80px;
+  }
+  .topBar {
+    align-items: center;
+  }
+  .returnButton {
+    position: absolute;
+    left: 1rem;
+  }
+  .createButton {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+}

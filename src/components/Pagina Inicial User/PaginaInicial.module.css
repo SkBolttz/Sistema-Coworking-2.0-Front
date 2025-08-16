@@ -1,0 +1,159 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.cardOne {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 27px;
+    padding: 10px;
+    gap: 50px;
+}
+
+.cardTwo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    gap: 50px;
+}
+
+.imagem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    gap: 50px;
+}
+
+.imagem img {
+    width: 65px;
+}
+
+.cardButton {
+    background-color: #edeff146;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+}
+
+.cardButton:hover {
+    background-color: #edeff11f;
+    color: #ffd700;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.LowerCard p {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+}
+
+.Dashboard {
+    background-color: #edeff146;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 20px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    width: 800px;
+}
+
+.DashboardTittle {
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 10px;
+    padding: 10px;
+    gap: 50px;
+}
+
+.imagemDash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100px;
+    margin: 60px;
+    padding: 50px;
+    gap: 50px;
+}
+
+.imagemDash img {
+    width: 250px;
+}
+
+.legenda {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    gap: 50px;
+}
+
+.cor {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+li {
+    list-style: none;
+    font-size: 1.5em;
+    color: white;
+}
+
+li p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    gap: 50px;
+    font-size: 1.5em;
+    color: white;
+}
+
+.ContainerV2 {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+}
+
+.GraphicV2P {
+    display: flex;
+    flex-direction: row;
+}
+
+.GraphicV2Parag {
+    font-size: 1em;
+    width: 300px;
+}

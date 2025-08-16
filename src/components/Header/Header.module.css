@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --primary-color: #6f2581;
+  --secondary-color: #8c728e;
+  --bg-color: #f0f2f5;
+  --card-bg: #ffffff;
+  --text-color: #333333;
+  --placeholder-color: #999999;
+  --error-color: #e53935;
+  --border-color: #e0e0e0;
+  --header-bg: rgba(255, 255, 255, 0.9);
+  --header-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: var(--header-bg);
+  box-shadow: var(--header-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  color: var(--primary-color);
+}
+
+.logoText {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.2s ease;
+  position: relative;
+}
+
+.links a:hover {
+  color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.links a:hover::after {
+  width: 100%;
+}
+
+.menu button {
+  background: linear-gradient(45deg, #6f2581, #9d4edd);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.menu button:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 1rem;
+    height: 60px;
+  }
+
+  .logoText {
+    font-size: 1.2rem;
+  }
+
+  .links {
+    display: none;
+  }
+
+  .menu button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    justify-content: center;
+  }
+
+  .logoContainer {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .menu {
+    position: absolute;
+    right: 1rem;
+  }
+}
