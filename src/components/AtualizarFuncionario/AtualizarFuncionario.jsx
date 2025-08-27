@@ -25,7 +25,7 @@ const AtualizarFuncionario = () => {
     const fetchFuncionario = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/visitante/obter-por-id",
+          "https://sistema-coworking-20-production.up.railway.app/visitante/obter-por-id",
           { id: idFuncionario },
           {
             headers: {
@@ -66,7 +66,7 @@ const AtualizarFuncionario = () => {
 
     axios
       .put(
-        "http://localhost:8080/visitante/atualizar",
+        "https://sistema-coworking-20-production.up.railway.app/visitante/atualizar",
         dadosPessoais,
         {
           headers: {
@@ -96,7 +96,7 @@ const AtualizarFuncionario = () => {
 
     axios
       .put(
-        "http://localhost:8080/visitante/atualizar",
+        "https://sistema-coworking-20-production.up.railway.app/visitante/atualizar",
         dadosEmpresa,
         {
           headers: {
@@ -117,7 +117,7 @@ const AtualizarFuncionario = () => {
     setMensagemSucesso(null);
     axios
       .put(
-        `http://localhost:8080/visitante/desativar`,
+        `https://sistema-coworking-20-production.up.railway.app/visitante/desativar`,
         { cpf: funcionario.cpf },
         {
           headers: {
@@ -134,7 +134,7 @@ const AtualizarFuncionario = () => {
     setMensagemSucesso(null);
     axios
       .put(
-        `http://localhost:8080/visitante/ativar`,
+        `https://sistema-coworking-20-production.up.railway.app/visitante/ativar`,
         { cpf: funcionario.cpf },
         {
           headers: {
@@ -162,7 +162,7 @@ const AtualizarFuncionario = () => {
 
     axios
       .post(
-        "http://localhost:8080/visitante/trocar-senha",
+        "https://sistema-coworking-20-production.up.railway.app/visitante/trocar-senha",
         {
           id: idFuncionario,
           senha: senhaAtual,

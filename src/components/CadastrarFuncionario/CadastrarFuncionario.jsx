@@ -32,7 +32,7 @@ function CadastrarFuncionario() {
       setError(null);
       try {
         const response = await axios.get(
-          "http://localhost:8080/visitante/listar/funcionario?page=0&size=1000",
+          "https://sistema-coworking-20-production.up.railway.app/visitante/listar/funcionario?page=0&size=1000",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

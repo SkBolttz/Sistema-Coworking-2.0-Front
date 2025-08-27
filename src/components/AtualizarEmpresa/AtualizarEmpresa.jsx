@@ -29,7 +29,7 @@ const AtualizarEmpresa = () => {
     const fetchEmpresa = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/empresa/obter",
+          "https://sistema-coworking-20-production.up.railway.app/empresa/obter",
           { cnpj: cnpjEmpresa },
           {
             headers: {
@@ -55,7 +55,7 @@ const AtualizarEmpresa = () => {
       const token = localStorage.getItem("token");
       if (!token) return;
       const response = await axios.get(
-        "http://localhost:8080/ramo/obter-ramos",
+        "https://sistema-coworking-20-production.up.railway.app/ramo/obter-ramos",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -72,7 +72,7 @@ const AtualizarEmpresa = () => {
       const token = localStorage.getItem("token");
       if (!token) return;
       const response = await axios.get(
-        "http://localhost:8080/visitante/listar-visitantes-disponiveis",
+        "https://sistema-coworking-20-production.up.railway.app/visitante/listar-visitantes-disponiveis",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -117,7 +117,7 @@ const AtualizarEmpresa = () => {
     };
 
     try {
-      await axios.put("http://localhost:8080/empresa/atualizar", dadosGeral, {
+      await axios.put("https://sistema-coworking-20-production.up.railway.app/empresa/atualizar", dadosGeral, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
           "Content-Type": "application/json",
@@ -139,7 +139,7 @@ const AtualizarEmpresa = () => {
     setMensagemErro(null);
     try {
       await axios.put(
-        "http://localhost:8080/empresa/desativar",
+        "https://sistema-coworking-20-production.up.railway.app/empresa/desativar",
         { cnpj: cnpjEmpresa },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -157,7 +157,7 @@ const AtualizarEmpresa = () => {
     setMensagemErro(null);
     try {
       await axios.put(
-        "http://localhost:8080/empresa/ativar",
+        "https://sistema-coworking-20-production.up.railway.app/empresa/ativar",
         { cnpj: cnpjEmpresa },
         {
           headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -184,7 +184,7 @@ const AtualizarEmpresa = () => {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:8080/ramo/cadastrar",
+        "https://sistema-coworking-20-production.up.railway.app/ramo/cadastrar",
         { ramo: valorRamo },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -198,8 +198,6 @@ const AtualizarEmpresa = () => {
       setIsSubmitting(false);
     }
   };
-
-  // ...código anterior
   return (
     <>
       <Header />
@@ -223,9 +221,7 @@ const AtualizarEmpresa = () => {
 
         {etapa === 1 && (
           <div className={style.formsContainer}>
-            {/* Novo contêiner para alinhar os formulários */}
             <div className={style.formSectionsWrapper}>
-              {/* Seção de Dados Gerais */}
               <motion.div className={style.formContainer}>
                 <h2 className={style.formTitle}>Dados Gerais</h2>
                 <form className={style.form} onSubmit={handleSubmitGeral}>
@@ -328,7 +324,6 @@ const AtualizarEmpresa = () => {
                 </form>
               </motion.div>
 
-              {/* Seção de Endereço */}
               <motion.div className={style.formContainer}>
                 <h2 className={style.formTitle}>Endereço</h2>
                 <div className={style.inputGrid}>
@@ -426,7 +421,6 @@ const AtualizarEmpresa = () => {
           </div>
         )}
 
-        {/* ... outras etapas do formulário ... */}
         {etapa === 0 && (
           <motion.div
             className={style.overlay}

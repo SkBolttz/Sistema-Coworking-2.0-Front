@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import style from "./ListarSalasLivres.module.css";
+import Header from "../Header/Header";
 import axios from "axios";
 import { motion } from "framer-motion";
-import style from "./CadastrarSala.module.css";
-import Header from "../Header/Header";
+import { useState, useEffect } from "react";
 
-function CadastrarSala() {
+function listarSalasLivres() {
   const [salas, setSalas] = useState([]);
   const [imagens, setImagens] = useState({});
   const [pesquisa, setPesquisa] = useState("");
-  const [filtroStatus, setFiltroStatus] = useState("");
   const [paginaAtual, setPaginaAtual] = useState(0);
   const [totalPaginas, setTotalPaginas] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -34,7 +34,7 @@ function CadastrarSala() {
     setError(null);
     try {
       const response = await axios.get(
-        `https://sistema-coworking-20-production.up.railway.app/sala/listar-todas?page=${pagina}&size=6`,
+        `https://sistema-coworking-20-production.up.railway.app/sala/listar-disponiveis?page=${pagina}&size=6`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -61,7 +61,10 @@ function CadastrarSala() {
           const imageUrl = URL.createObjectURL(res.data);
           imagensTemp[sala.id] = imageUrl;
         } catch (imageError) {
-          console.error(`Erro ao buscar imagem para a sala ${sala.id}:`, imageError);
+          console.error(
+            `Erro ao buscar imagem para a sala ${sala.id}:`,
+            imageError
+          );
           imagensTemp[sala.id] =
             "https://placehold.co/400x300/e0e0e0/ffffff?text=Sem+Imagem";
         }
@@ -70,7 +73,9 @@ function CadastrarSala() {
       setImagens(imagensTemp);
     } catch (fetchError) {
       console.error("Erro ao buscar salas:", fetchError);
-      setError("Não foi possível carregar as salas. Tente novamente mais tarde.");
+      setError(
+        "Não foi possível carregar as salas. Tente novamente mais tarde."
+      );
     } finally {
       setLoading(false);
     }
@@ -104,10 +109,8 @@ function CadastrarSala() {
     const pesquisaSala = pesquisa.toLowerCase();
 
     const correspondePesquisa = nomeSala.includes(pesquisaSala);
-    const correspondeStatus =
-      filtroStatus === "" || sala.disponivel === filtroStatus;
 
-    return correspondePesquisa && correspondeStatus;
+    return correspondePesquisa;
   });
 
   return (
@@ -122,7 +125,7 @@ function CadastrarSala() {
         >
           <motion.button
             className={style.returnButton}
-            onClick={() => (window.location.href = "/admin")}
+            onClick={() => (window.location.href = "/home")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -142,7 +145,7 @@ function CadastrarSala() {
               <path d="M19 12H5" />
             </svg>
           </motion.button>
-          
+
           <div className={style.controls}>
             <div className={style.searchContainer}>
               <input
@@ -153,51 +156,8 @@ function CadastrarSala() {
                 className={style.searchInput}
               />
             </div>
-            <div className={style.statusButtons}>
-              <button
-                className={filtroStatus === "" ? style.activeFilter : ""}
-                onClick={() => setFiltroStatus("")}
-              >
-                Todas
-              </button>
-              <button
-                className={filtroStatus === true ? style.activeFilter : ""}
-                onClick={() => setFiltroStatus(true)}
-              >
-                Ativas
-              </button>
-              <button
-                className={filtroStatus === false ? style.activeFilter : ""}
-                onClick={() => setFiltroStatus(false)}
-              >
-                Inativas
-              </button>
-            </div>
+            <div className={style.statusButtons}></div>
           </div>
-          
-          <motion.button
-            className={style.createButton}
-            onClick={() => (window.location.href = "/formCadastroSala")}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="lucide lucide-plus"
-            >
-              <path d="M5 12h14" />
-              <path d="M12 5v14" />
-            </svg>
-            Cadastrar nova Sala
-          </motion.button>
         </motion.div>
 
         {loading ? (
@@ -226,7 +186,8 @@ function CadastrarSala() {
                   }
                   alt={`Sala ${sala.nome}`}
                   onError={(e) => {
-                     e.target.src = "https://placehold.co/400x300/e0e0e0/ffffff?text=Sem+Imagem";
+                    e.target.src =
+                      "https://placehold.co/400x300/e0e0e0/ffffff?text=Sem+Imagem";
                   }}
                 />
                 <div className={style.cardContent}>
@@ -241,7 +202,7 @@ function CadastrarSala() {
                           : style.statusInactive
                       }
                     >
-                      {sala.disponivel ? "Ativa" : "Inativa"}
+                      {sala.disponivel ? "Disponivel" : "Indisponivel"}
                     </span>
                   </p>
                   <button
@@ -291,4 +252,4 @@ function CadastrarSala() {
   );
 }
 
-export default CadastrarSala;
+export default listarSalasLivres;

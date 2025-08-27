@@ -18,7 +18,7 @@ function Header() {
       }
 
       const resposta = await axios.post(
-        "http://localhost:8080/visitante/dados",
+        "https://sistema-coworking-20-production.up.railway.app/visitante/dados",
         { cpf: cpf },
         {
           headers: {
@@ -27,7 +27,7 @@ function Header() {
           },
         }
       );
-
+      console.log(resposta.data);
       if (
         resposta.data.email.includes(emailDomain) ||
         resposta.data.email.includes(adminEmailDomain)
@@ -79,7 +79,7 @@ function Header() {
         <a href="#" onClick={verificarInicio}>
           Início
         </a>
-        <a href="/minhas-reservas">Minhas Reservas</a>
+        <a href="/consultaReserva">Minhas Reservas</a>
         <a href="/faq">FAQ</a>
       </nav>
 

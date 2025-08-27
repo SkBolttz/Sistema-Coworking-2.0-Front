@@ -1,159 +1,262 @@
-* {
-    padding: 0;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --primary-color: #6f2581;
+    --secondary-color: #8c728e;
+    --bg-color: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --border-color: #e0e0e0;
+    --hover-bg-color: #f5f5f5;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: 'Poppins', sans-serif;
     margin: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.cardOne {
+.mainContainer {
+    flex: 1;
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
-    margin: 27px;
-    padding: 10px;
-    gap: 50px;
-}
-
-.cardTwo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    gap: 50px;
-}
-
-.imagem {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    gap: 50px;
-}
-
-.imagem img {
-    width: 65px;
-}
-
-.cardButton {
-    background-color: #edeff146;
-    border-radius: 10px;
-    padding: 10px;
-    width: 200px;
-    height: 200px;
-}
-
-.cardButton:hover {
-    background-color: #edeff11f;
-    color: #ffd700;
-    transition: 0.5s;
-    cursor: pointer;
-}
-
-.LowerCard p {
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    gap: 100px;
-}
-
-.Dashboard {
-    background-color: #edeff146;
-    color: white;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 20px;
-    font-weight: bold;
-    font-size: 1.2rem;
-    width: 800px;
-}
-
-.DashboardTittle {
-    color: white;
-    display: flex;
-    justify-content: flex-start;
     align-items: flex-start;
-    margin: 10px;
-    padding: 10px;
-    gap: 50px;
+    padding: 2rem 1rem;
+    gap: 2rem;
+    margin: 0 auto;
 }
 
-.imagemDash {
+.actionCardsSection {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2rem;
+    width: 100%;
+    max-width: 800px;
+    justify-content: center;
+    flex: 1;
+    min-width: 300px;
+}
+
+.actionCard {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+    min-height: 180px;
+}
+
+.actionCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    background-color: var(--hover-bg-color);
+}
+
+.actionCardIcon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actionCardIcon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.actionCard p {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.dashboardSection {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+    width: 100%;
+    max-width: 600px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    flex: 1;
+    min-width: 300px;
+}
+
+.dashboardTitle {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.dashboardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.graphicContainer {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
-    height: 100px;
-    margin: 60px;
-    padding: 50px;
-    gap: 50px;
 }
 
-.imagemDash img {
-    width: 250px;
+.graphicContainer img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
-.legenda {
+.statsList ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    font-weight: bold;
-    font-size: 18px;
-    color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    gap: 50px;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
 }
 
-.cor {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: inline-block;
-    margin-right: 10px;
-}
-
-li {
-    list-style: none;
-    font-size: 1.5em;
-    color: white;
-}
-
-li p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    gap: 50px;
-    font-size: 1.5em;
-    color: white;
-}
-
-.ContainerV2 {
+.statsList li {
+    font-size: 1.1rem;
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
-    justify-items: center;
     align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--border-color);
 }
 
-.GraphicV2P {
+.statsList li:last-child {
+    border-bottom: none;
+}
+
+.statsList li span {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.legendList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    width: 100%;
+}
+
+.legendList li {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--text-color);
+    justify-content: space-between;
 }
 
-.GraphicV2Parag {
-    font-size: 1em;
-    width: 300px;
+.legendColorBox {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    margin-right: 0.8rem;
+    flex-shrink: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cor_livre {
+    background-color: #4CAF50;
+}
+
+.cor_ocupada {
+    background-color: #FFC107;
+}
+
+.cor_outros {
+    background-color: #2196F3;
+}
+
+@media (min-width: 768px) {
+    .dashboardContent {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
+
+    .graphicContainer {
+        width: 40%;
+        max-width: none;
+    }
+
+    .statsList {
+        width: 50%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .mainContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .actionCardsSection,
+    .dashboardSection {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .actionCardsSection {
+        grid-template-columns: 1fr;
+    }
+
+    .actionCard {
+        min-height: 150px;
+        padding: 1rem;
+    }
+
+    .actionCardIcon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .actionCard p {
+        font-size: 1rem;
+    }
+
+    .dashboardSection {
+        padding: 1.5rem;
+    }
+
+    .dashboardTitle {
+        font-size: 1.5rem;
+    }
+
+    .statsList li,
+    .legendList li {
+        font-size: 0.9rem;
+    }
 }

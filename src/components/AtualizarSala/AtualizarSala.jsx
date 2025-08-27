@@ -41,7 +41,7 @@ const AtualizarSala = () => {
     const fetchSala = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/sala/dados",
+          "https://sistema-coworking-20-production.up.railway.app/sala/dados",
           { id: idSala },
           {
             headers: {
@@ -63,7 +63,7 @@ const AtualizarSala = () => {
   useEffect(() => {
     if (sala?.fotoUrl) {
       axios
-        .get(`http://localhost:8080/sala/imagens/sala/${sala.fotoUrl}`, {
+        .get(`https://sistema-coworking-20-production.up.railway.app/sala/imagens/sala/${sala.fotoUrl}`, {
           responseType: "blob",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -118,7 +118,7 @@ const AtualizarSala = () => {
     }
 
     axios
-      .put("http://localhost:8080/sala/atualizar", formDataAtualizada, {
+      .put("https://sistema-coworking-20-production.up.railway.app/sala/atualizar", formDataAtualizada, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -137,7 +137,7 @@ const AtualizarSala = () => {
 
     axios
       .put(
-        `http://localhost:8080/sala/desativar`,
+        `https://sistema-coworking-20-production.up.railway.app/sala/desativar`,
         { id: idSala },
         {
           headers: {
@@ -160,7 +160,7 @@ const AtualizarSala = () => {
 
     axios
       .put(
-        `http://localhost:8080/sala/ativar`,
+        `https://sistema-coworking-20-production.up.railway.app/sala/ativar`,
         { id: idSala },
         {
           headers: {

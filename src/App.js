@@ -3,7 +3,7 @@ import "./App.css";
 import PainelLogin from "./components/Login/PainelLogin";
 import PainelCadastro from "./components/Cadastro/PainelCadastro";
 import PaginaInicial from "./components/Pagina Inicial User/PaginaInicial";
-import ReservarSala from "./components/ReservarSala/ReservarSala";
+import ConsultarReserva from "./components/ConsultarReserva/ConsultarReserva";
 import PaginaInicialAdmin from "./components/Pagina Inicial Admin/PaginaInicialAdmin";
 import CadastrarEstacao from "./components/Cadastrar Estacao/CadastrarEstacao";
 import FormCadastroEstacao from "./components/Cadastrar Estacao/FormCadastroEstacao";
@@ -18,6 +18,11 @@ import CadastrarEmpresa from "./components/CadastrarEmpresa/CadastroEmpresa";
 import CadastrarNovaEmpresa from "./components/CadastrarEmpresa/CadastrarNovaEmpresa";
 import PasswordReset from "./components/RecuperarSenha/PasswordReset";
 import AtualizarEmpresa from "./components/AtualizarEmpresa/AtualizarEmpresa";
+import ListaEstacoesLivres from "./components/ConsultarEstacoesLivres/ListaEstacoesLivres";
+import ListarSalasLivres from "./components/ConsultarSalasLivres/ListarSalasLivres";
+import ConsultarPerfil from "./components/ConsultarPerfil/ConsultarPerfil";
+import ConsultarEmpresa from "./components/ConsultarEmpresa/ConsultarEmpresa";
+import Faq from "./components/ConsultarFAQ/Faq";
 
 function App() {
   return (
@@ -26,7 +31,7 @@ function App() {
         <Route path="/" element={<PainelLogin />} />
         <Route path="/cadastro" element={<PainelCadastro />} />
         <Route path="/home" element={<PaginaInicial />} />
-        <Route path="/reservar" element={<ReservarSala />} />
+        <Route path="/consultaReserva" element={<ConsultarReserva />} />
         <Route path="/admin" element={<PaginaInicialAdmin />} />
         <Route path="/cadastrarEstacao" element={<CadastrarEstacao />} />
         <Route path="/formCadastroEstacao" element={<FormCadastroEstacao />} />
@@ -41,6 +46,11 @@ function App() {
         <Route path="/cadastroEmpresa" element={<CadastrarNovaEmpresa />} />
         <Route path="/recuperarSenha" element={<PasswordReset />} />
         <Route path="/atualizarEmpresa" element={<AtualizarEmpresa />} />
+        <Route path="/estacoesLivres" element={<ListaEstacoesLivres />} />
+        <Route path="/salasLivres" element={<ListarSalasLivres />} />
+        <Route path="/consultarPerfil" element={<ConsultarPerfil />} />
+        <Route path="/consultarEmpresa" element={<ConsultarEmpresa />} />
+        <Route path="/faq" element={<Faq />} />
       </Routes>
     </BrowserRouter>
   );

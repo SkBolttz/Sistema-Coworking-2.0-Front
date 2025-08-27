@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import style from "./CadastrarEstacao.module.css";
+import style from "./ListaEstacoesLivres.module.css";
 import Header from "../Header/Header";
 
 function CadastrarEstacao() {
   const [estacoes, setEstacoes] = useState([]);
   const [imagens, setImagens] = useState({});
   const [pesquisa, setPesquisa] = useState("");
-  const [filtroStatus, setFiltroStatus] = useState("");
   const [paginaAtual, setPaginaAtual] = useState(0);
   const [totalPaginas, setTotalPaginas] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +33,7 @@ function CadastrarEstacao() {
     setError(null);
     try {
       const response = await axios.get(
-        `https://sistema-coworking-20-production.up.railway.app/estacao/listar-todas?page=${pagina}&size=6`,
+        `https://sistema-coworking-20-production.up.railway.app/estacao/listar-ativas?page=${pagina}&size=6`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -92,9 +91,8 @@ function CadastrarEstacao() {
   const estacoesFiltradas = estacoes.filter((estacao) => {
     const nomeEstacao = (estacao.identificacao || "").toLowerCase();
     const pesquisaEstacao = pesquisa.toLowerCase();
-    const statusMatch = filtroStatus === "" || estacao.ativo === filtroStatus;
 
-    return nomeEstacao.includes(pesquisaEstacao) && statusMatch;
+    return nomeEstacao.includes(pesquisaEstacao);
   });
 
   return (
@@ -109,7 +107,7 @@ function CadastrarEstacao() {
         >
           <motion.button
             className={style.returnButton}
-            onClick={() => (window.location.href = "/admin")}
+            onClick={() => (window.location.href = "/home")}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -139,50 +137,7 @@ function CadastrarEstacao() {
                 className={style.searchInput}
               />
             </div>
-            <div className={style.statusButtons}>
-              <button
-                onClick={() => setFiltroStatus("")}
-                className={filtroStatus === "" ? style.activeFilter : ""}
-              >
-                Todas
-              </button>
-              <button
-                onClick={() => setFiltroStatus(true)}
-                className={filtroStatus === true ? style.activeFilter : ""}
-              >
-                Ativas
-              </button>
-              <button
-                onClick={() => setFiltroStatus(false)}
-                className={filtroStatus === false ? style.activeFilter : ""}
-              >
-                Inativas
-              </button>
-            </div>
           </div>
-          <motion.button
-            className={style.createButton}
-            onClick={() => (window.location.href = "/formCadastroEstacao")}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="lucide lucide-plus"
-            >
-              <path d="M5 12h14" />
-              <path d="M12 5v14" />
-            </svg>
-            Cadastrar uma nova Estação
-          </motion.button>
         </motion.div>
 
         {isLoading && (
@@ -220,7 +175,7 @@ function CadastrarEstacao() {
                       estacao.ativo ? style.statusActive : style.statusInactive
                     }`}
                   >
-                    Status: {estacao.ativo ? "Ativa" : "Inativa"}
+                    Status: {estacao.ativo ? "Disponível" : "Indisponível"}
                   </p>
                   <button
                     className={style.botaoInfo}

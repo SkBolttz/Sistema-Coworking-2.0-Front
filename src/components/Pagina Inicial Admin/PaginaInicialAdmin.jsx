@@ -38,7 +38,7 @@ function PaginaInicial() {
     async function salasLivres() {
       try {
         const resposta = await axios.get(
-          "http://localhost:8080/sala/listar-disponiveis",
+          "https://sistema-coworking-20-production.up.railway.app/sala/listar-disponiveis",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -58,7 +58,7 @@ function PaginaInicial() {
     async function salasOcupadas() {
       try {
         const resposta = await axios.get(
-          "http://localhost:8080/sala/listar-indisponiveis",
+          "https://sistema-coworking-20-production.up.railway.app/sala/listar-indisponiveis",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -78,7 +78,7 @@ function PaginaInicial() {
     async function estacoesDisponiveis() {
       try {
         const resposta = await axios.get(
-          "http://localhost:8080/estacao/listar-ativas",
+          "https://sistema-coworking-20-production.up.railway.app/estacao/listar-ativas",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -98,7 +98,7 @@ function PaginaInicial() {
     async function visitantesCadastrados() {
       try {
         const resposta = await axios.get(
-          "http://localhost:8080/visitante/listar",
+          "https://sistema-coworking-20-production.up.railway.app/visitante/listar",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -118,7 +118,7 @@ function PaginaInicial() {
     async function funcionariosCadastrados() {
       try {
         const resposta = await axios.get(
-          "http://localhost:8080/visitante/listar/funcionario",
+          "https://sistema-coworking-20-production.up.railway.app/visitante/listar/funcionario",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -138,7 +138,7 @@ function PaginaInicial() {
     async function empresasCadastradas() {
       try {
         const resposta = await axios.get(
-          "http://localhost:8080/empresa/listar-ativas",
+          "https://sistema-coworking-20-production.up.railway.app/empresa/listar-ativas",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

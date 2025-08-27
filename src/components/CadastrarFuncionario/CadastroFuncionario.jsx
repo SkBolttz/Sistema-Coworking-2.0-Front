@@ -91,7 +91,7 @@ function PainelCadastro() {
       );
       formData.append("file", fotoDocumentoFile);
 
-      await axios.post("http://localhost:8080/auth/registro", formData);
+      await axios.post("https://sistema-coworking-20-production.up.railway.app/auth/registro", formData);
 
       setTimeout(() => {
         setLoading(false);

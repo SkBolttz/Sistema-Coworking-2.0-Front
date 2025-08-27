@@ -7,123 +7,94 @@ import Laptop from "../../Image/Laptop.png";
 import Search from "../../Image/Search.png";
 import Graphic from "../../Image/Graphic.png";
 
+
 function PaginaInicial() {
+
   return (
     <div>
-      <div>
-        <Header />
-      </div>
+      <Header />
+      <main className={style.mainContainer}>
+        <section className={style.actionCardsSection}>
+          <button
+            onClick={() => (window.location.href = "/consultaReserva")}
+            className={style.actionCard}
+          >
+            <div className={style.actionCardIcon}>
+              <img src={CalendarClock} alt="Calendar Clock" />
+            </div>
+            <p>Suas Reservas</p>
+          </button>
 
-      <div className={style.container}>
-        <div>
-          <div className={style.cardOne}>
-            <div className={style.LowerCard}>
-              <button
-                onClick={() => (window.location.href = "/reservar")}
-                className={style.cardButton}
-              >
-                <p className={style.imagem}>
-                  <img src={CalendarClock} alt="Calendar Clock" />
-                </p>
-                <p>Reservar Sala</p>
-              </button>
+          <button className={style.actionCard} onClick={() => (window.location.href = "/estacoesLivres")}>
+            <div className={style.actionCardIcon}>
+              <img src={Laptop} alt="Laptop" />
             </div>
+            <p>Verificar Estações Livres</p>
+          </button>
 
-            <div className={style.LowerCard}>
-              <button className={style.cardButton}>
-                <p className={style.imagem}>
-                  <img src={Laptop} alt="Laptop" />
-                </p>
-                <p>Reservar Estacao</p>
-              </button>
+          <button className={style.actionCard} onClick={() => (window.location.href = "/salasLivres")}>
+            <div className={style.actionCardIcon}>
+              <img src={Laptop} alt="Laptop" />
             </div>
-            <div className={style.LowerCard}>
-              <button className={style.cardButton}>
-                <p className={style.imagem}>
-                  <img src={Laptop} alt="Laptop" />
-                </p>
-                <p>Reservar Estacao</p>
-              </button>
-            </div>
-          </div>
+            <p>Verificar Salas Disponíveis</p>
+          </button>
 
-          <div className={style.cardTwo}>
-            <div className={style.LowerCard}>
-              <button className={style.cardButton}>
-                <p className={style.imagem}>
-                  <img src={Search} alt="Search" />
-                </p>
-                <p>Verificar Salas Disponiveis</p>
-              </button>
+          <button className={style.actionCard} onClick={() => (window.location.href = "/consultarPerfil")}>
+            <div className={style.actionCardIcon}>
+              <img src={Search} alt="Search" />
             </div>
-            <div className={style.LowerCard}>
-              <button className={style.cardButton}>
-                <p className={style.imagem}>
-                  <img src={Enterprise} alt="Enterprise" />
-                </p>
-                <p>Consultar Empresa</p>
-              </button>
-            </div>
-            <div className={style.LowerCard}>
-              <button className={style.cardButton}>
-                <p className={style.imagem}>
-                  <img src={Enterprise} alt="Enterprise" />
-                </p>
-                <p>Consultar Empresa</p>
-              </button>
-            </div>
-          </div>
-        </div>
+            <p>Consultar Perfil</p>
+          </button>
 
-        <div className={style.Dashboard}>
-          <div>
-            <h2 className={style.DashboardTittle}>DASHBOARD</h2>
-          </div>
+          <button className={style.actionCard} onClick={() => (window.location.href = "/consultarEmpresa")}>
+            <div className={style.actionCardIcon}>
+              <img src={Enterprise} alt="Enterprise" />
+            </div>
+            <p>Consultar Empresa</p>
+          </button>
 
-          <div className={style.ContainerV2}>
-            <div>
-              <p className={style.imagemDash}>
-                <img src={Graphic} alt="Graphic" />
-              </p>
+          <button className={style.actionCard} onClick={() => (window.location.href = "/faq")}>
+            <div className={style.actionCardIcon}>
+              <img src={Enterprise} alt="Enterprise" />
+            </div>
+            <p>FAQ</p>
+          </button>
+        </section>
+
+        <section className={style.dashboardSection}>
+          <h2 className={style.dashboardTitle}>DASHBOARD</h2>
+
+          <div className={style.dashboardContent}>
+            <div className={style.graphicContainer}>
+              <img src={Graphic} alt="Graphic" />
             </div>
 
-            <div className={style.GraphicV2}>
+            <div className={style.statsList}>
               <ul>
-                <li>
-                  <p className={style.GraphicV2Parag}>
-                    Empresas Cadastradas: 15
-                  </p>
-                </li>
-                <li>
-                  <p className={style.GraphicV2Parag}>
-                    Usuario Cadastrados: 30
-                  </p>
-                </li>
+                <li>Usuários Cadastrados: <span>30</span></li>
+
               </ul>
             </div>
           </div>
 
-          <div className={style.List}>
-            <ul className={style.legenda}>
-              <li>
-                <span className={style.cor_livre}></span>Salas Livres
-                <p>15</p>
-              </li>
-              <li>
-                <span className={style.cor_ocupada}></span>Salas Ocupadas
-                <p>09</p>
-              </li>
-              <li>
-                <span className={style.cor_outros}></span>Outros
-                <p>62%</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div>
-        <Footer />
-      </div>
+          <ul className={style.legendList}>
+            <li>
+              <span className={`${style.legendColorBox} ${style.cor_livre}`}></span>
+              Salas Livres: <span>15</span>
+            </li>
+            <li>
+              <span className={`${style.legendColorBox} ${style.cor_ocupada}`}></span>
+              Salas Ocupadas: <span>09</span>
+            </li>
+            <li>
+              <span className={`${style.legendColorBox} ${style.cor_outros}`}></span>
+              Estações Livres: <span>62%</span>
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <Footer />
     </div>
   );
 }

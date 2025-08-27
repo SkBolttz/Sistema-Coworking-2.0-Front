@@ -22,7 +22,7 @@ const AtualizarEstacao = () => {
     const fetchEstacao = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/estacao/obter",
+          "https://sistema-coworking-20-production.up.railway.app/estacao/obter",
           { id: idEstacao },
           {
             headers: {
@@ -41,7 +41,7 @@ const AtualizarEstacao = () => {
     const fetchSalas = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8080/sala/listar-disponiveis",
+          "https://sistema-coworking-20-production.up.railway.app/sala/listar-disponiveis",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -64,7 +64,7 @@ const AtualizarEstacao = () => {
     if (estacao?.fotoUrl) {
       axios
         .get(
-          `http://localhost:8080/estacao/imagens/estacao/${estacao.fotoUrl}`,
+          `https://sistema-coworking-20-production.up.railway.app/estacao/imagens/estacao/${estacao.fotoUrl}`,
           {
             responseType: "blob",
             headers: {
@@ -121,7 +121,7 @@ const AtualizarEstacao = () => {
     }
 
     axios
-      .put("http://localhost:8080/estacao/atualizar", formDataAtualizada, {
+      .put("https://sistema-coworking-20-production.up.railway.app/estacao/atualizar", formDataAtualizada, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -140,7 +140,7 @@ const AtualizarEstacao = () => {
     setMensagemErro(null);
     axios
       .put(
-        `http://localhost:8080/estacao/desativar`,
+        `https://sistema-coworking-20-production.up.railway.app/estacao/desativar`,
         { id: idEstacao },
         {
           headers: {
@@ -162,7 +162,7 @@ const AtualizarEstacao = () => {
     setMensagemErro(null);
     axios
       .put(
-        `http://localhost:8080/estacao/ativar`,
+        `https://sistema-coworking-20-production.up.railway.app/estacao/ativar`,
         { id: idEstacao },
         {
           headers: {

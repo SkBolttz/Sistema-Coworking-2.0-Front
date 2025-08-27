@@ -33,13 +33,13 @@ function PainelLogin() {
       setDadosVazios(false);
       setLoading(true);
 
-      const resposta = await axios.post("http://localhost:8080/auth/login", {
+      const resposta = await axios.post("https://sistema-coworking-20-production.up.railway.app/auth/login", {
         cpf,
         senha,
       });
 
       const respostaEmail = await axios.post(
-        "http://localhost:8080/visitante/verificarEmail",
+        "https://sistema-coworking-20-production.up.railway.app/visitante/verificarEmail",
         { cpf },
         {
           headers: {

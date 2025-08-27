@@ -78,7 +78,7 @@ function FormCadastroSala() {
         return;
       }
 
-      await axios.post("http://localhost:8080/sala/criar", formData, {
+      await axios.post("https://sistema-coworking-20-production.up.railway.app/sala/criar", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -173,7 +173,6 @@ function FormCadastroSala() {
               <input type="text" id="localizacao" name="localizacao" />
             </div>
 
-            {/* Mensagens de feedback do usuário */}
             {sucesso && (
               <p className={`${style.message} ${style.sucesso}`}>Sala cadastrada com sucesso!</p>
             )}
@@ -184,7 +183,6 @@ function FormCadastroSala() {
               </p>
             )}
 
-            {/* Botão de submissão com animações e estado de loading */}
             <motion.button
               type="submit"
               className={style.buttonSubmit}

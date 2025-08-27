@@ -32,7 +32,7 @@ function CadastroEmpresa() {
       setError(null);
       try {
         const response = await axios.get(
-          "http://localhost:8080/empresa/listar-todas",
+          "https://sistema-coworking-20-production.up.railway.app/empresa/listar-todas",
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -97,7 +97,7 @@ function CadastrarNovaEmpresa() {
         },
       };
 
-      await axios.post("http://localhost:8080/empresa/cadastrar", empresa, {
+      await axios.post("https://sistema-coworking-20-production.up.railway.app/empresa/cadastrar", empresa, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -128,7 +128,7 @@ function CadastrarNovaEmpresa() {
     try {
       const token = localStorage.getItem("token");
       await axios.post(
-        "http://localhost:8080/ramo/cadastrar",
+        "https://sistema-coworking-20-production.up.railway.app/ramo/cadastrar",
         { ramo: valorRamo },
         {
           headers: {
@@ -177,7 +177,7 @@ function CadastrarNovaEmpresa() {
       const token = localStorage.getItem("token");
       if (!token) return;
       const response = await axios.get(
-        "http://localhost:8080/ramo/obter-ramos",
+        "https://sistema-coworking-20-production.up.railway.app/ramo/obter-ramos",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -196,7 +196,7 @@ function CadastrarNovaEmpresa() {
       const token = localStorage.getItem("token");
       if (!token) return;
       const response = await axios.get(
-        "http://localhost:8080/visitante/listar-visitantes-disponiveis",
+        "https://sistema-coworking-20-production.up.railway.app/visitante/listar-visitantes-disponiveis",
         {
           headers: {
             Authorization: `Bearer ${token}`,

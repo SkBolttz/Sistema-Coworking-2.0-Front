@@ -69,7 +69,7 @@ function FormCadastroEstacao() {
         return;
       }
 
-      await axios.post("http://localhost:8080/estacao/cadastrar", formData, {
+      await axios.post("https://sistema-coworking-20-production.up.railway.app/estacao/cadastrar", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -95,7 +95,7 @@ function FormCadastroEstacao() {
         }
 
         const response = await axios.get(
-          "http://localhost:8080/sala/listar-disponiveis",
+          "https://sistema-coworking-20-production.up.railway.app/sala/listar-disponiveis",
           {
             headers: {
               Authorization: `Bearer ${token}`,
