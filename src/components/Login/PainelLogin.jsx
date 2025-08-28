@@ -85,12 +85,12 @@ function PainelLogin() {
         <form className={style.loginForm} onSubmit={handleSubmit}>
           <div className={style.inputGroup}>
             <label htmlFor="cpf">CPF</label>
-            <input id="cpf" type="text" autoFocus />
+            <input id="cpf" type="text" autoFocus maxLength={11} />
           </div>
 
           <div className={style.inputGroup}>
             <label htmlFor="senha">Senha</label>
-            <input id="senha" type="password" placeholder="******" />
+            <input id="senha" type="password" placeholder="******"  maxLength={8}/>
           </div>
 
           {erroLogin && (
