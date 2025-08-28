@@ -14,6 +14,15 @@ function CircularColor() {
 }
 
 function PainelCadastro() {
+  const [nomeCompleto, setNomeCompleto] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [observacao, setObservacao] = useState("");
+  const [fotoDocumentoFile, setFotoDocumentoFile] = useState(null);
+  const [cnpj, setCnpj] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [loading, setLoading] = useState(false);
@@ -24,16 +33,6 @@ function PainelCadastro() {
     setErrorMessage("");
     setIsSubmitting(true);
     setLoading(true);
-
-    const nomeCompleto = e.target.elements["nome"].value.trim();
-    const email = e.target.elements["email"].value.trim();
-    const telefone = e.target.elements["telefone"].value.trim();
-    const cpf = e.target.elements["cpf"].value.trim();
-    const senha = e.target.elements["password"].value;
-    const confirmarSenha = e.target.elements["confirmarSenha"].value;
-    const observacao = e.target.elements["observacao"].value.trim();
-    const fotoDocumentoFile = e.target.elements["foto"].files[0];
-    const cnpj = e.target.elements["cnpj"].value.trim();
 
     if (
       !nomeCompleto ||
@@ -73,6 +72,31 @@ function PainelCadastro() {
       return;
     }
 
+    if (nomeCompleto.length < 10 || nomeCompleto.length > 40) {
+      setErrorMessage(
+        "O nome completo deve conter pelo menos 10 e no máximo 40 caracteres."
+      );
+      setIsSubmitting(false);
+      setLoading(false);
+      return;
+    }
+
+    if (senha.length < 8 || confirmarSenha.length < 8) {
+      setErrorMessage("A senha deve conter pelo menos 8 caracteres.");
+      setIsSubmitting(false);
+      setLoading(false);
+      return;
+    }
+
+    if (cnpj.length !== 0) {
+      if (cnpj.length !== 14 || !/^\d+$/.test(cnpj)) {
+        setErrorMessage("O CNPJ deve conter exatamente 14 dígitos numéricos.");
+        setIsSubmitting(false);
+        setLoading(false);
+        return;
+      }
+    }
+
     try {
       const visitante = {
         nomeCompleto,
@@ -91,7 +115,10 @@ function PainelCadastro() {
       );
       formData.append("file", fotoDocumentoFile);
 
-      await axios.post("https://sistema-coworking-20-production.up.railway.app/auth/registro", formData);
+      axios.post(
+        "https://sistema-coworking-20-production.up.railway.app/auth/registro",
+        formData
+      );
 
       setTimeout(() => {
         setLoading(false);
@@ -105,20 +132,12 @@ function PainelCadastro() {
         setErrorMessage("Este email já está cadastrado.");
       } else if (mensagemErroAPI === "O CPF fornecido já está em uso.") {
         setErrorMessage("Este CPF já está cadastrado.");
-      } else if (
-        mensagemErroAPI === "Nome de usuario deve ter entre 10 e 40 caracteres"
-      ) {
-        setErrorMessage("O nome de usuário deve ter entre 10 e 40 caracteres.");
-      } else if (mensagemErroAPI === "CPF deve ter 11 digitos") {
-        setErrorMessage("O CPF deve ter 11 dígitos.");
-      } else if (mensagemErroAPI === "Telefone deve ter 11 digitos") {
-        setErrorMessage("O telefone deve ter 11 dígitos.");
       } else {
         setErrorMessage(
           "Ocorreu um erro inesperado ao tentar cadastrar. Tente novamente."
         );
       }
-      setLoading(false); 
+      setLoading(false);
     } finally {
       setIsSubmitting(false);
     }
@@ -153,6 +172,9 @@ function PainelCadastro() {
                   name="nome"
                   id="nome"
                   placeholder="Seu nome completo"
+                  value={nomeCompleto}
+                  maxLength={40}
+                  onChange={(e) => setNomeCompleto(e.target.value)}
                   autoFocus
                 />
               </div>
@@ -164,6 +186,9 @@ function PainelCadastro() {
                   name="email"
                   id="email"
                   placeholder="seu.email@exemplo.com"
+                  value={email}
+                  maxLength={320}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
@@ -175,6 +200,8 @@ function PainelCadastro() {
                   id="telefone"
                   placeholder="Ex: 11987654321"
                   maxLength={11}
+                  value={telefone}
+                  onChange={(e) => setTelefone(e.target.value)}
                 />
               </div>
 
@@ -186,6 +213,8 @@ function PainelCadastro() {
                   id="cpf"
                   placeholder="Somente números"
                   maxLength={11}
+                  value={cpf}
+                  onChange={(e) => setCpf(e.target.value)}
                 />
               </div>
             </div>
@@ -198,6 +227,9 @@ function PainelCadastro() {
                   name="password"
                   id="password"
                   placeholder="Mínimo 6 caracteres"
+                  value={senha}
+                  maxLength={30}
+                  onChange={(e) => setSenha(e.target.value)}
                 />
               </div>
 
@@ -208,6 +240,9 @@ function PainelCadastro() {
                   name="confirmarSenha"
                   id="confirmarSenha"
                   placeholder="Confirme sua senha"
+                  value={confirmarSenha}
+                  maxLength={30}
+                  onChange={(e) => setConfirmarSenha(e.target.value)}
                 />
               </div>
 
@@ -218,12 +253,20 @@ function PainelCadastro() {
                   name="observacao"
                   id="observacao"
                   placeholder="Alguma observação importante?"
+                  value={observacao}
+                  maxLength={200}
+                  onChange={(e) => setObservacao(e.target.value)}
                 />
               </div>
 
               <div className={style.inputGroup}>
                 <label htmlFor="foto">Foto do documento</label>
-                <input type="file" name="foto" id="foto" />
+                <input
+                  type="file"
+                  name="foto"
+                  id="foto"
+                  onChange={(e) => setFotoDocumentoFile(e.target.files[0])}
+                />
               </div>
 
               <div className={style.inputGroup}>
@@ -235,6 +278,9 @@ function PainelCadastro() {
                   name="cnpj"
                   id="cnpj"
                   placeholder="CNPJ da empresa"
+                  value={cnpj}
+                  maxLength={14}
+                  onChange={(e) => setCnpj(e.target.value)}
                 />
               </div>
             </div>
