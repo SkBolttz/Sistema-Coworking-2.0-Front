@@ -41,11 +41,6 @@ function PainelLogin() {
       const respostaEmail = await axios.post(
         "https://sistema-coworking-20-production.up.railway.app/visitante/verificarEmail",
         { cpf },
-        {
-          headers: {
-            Authorization: `Bearer ${resposta.data.token}`,
-          },
-        }
       );
 
       localStorage.setItem("cpf", cpf);
