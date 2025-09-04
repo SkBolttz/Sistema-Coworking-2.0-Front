@@ -23,7 +23,7 @@ import ListarSalasLivres from "./components/ConsultarSalasLivres/ListarSalasLivr
 import ConsultarPerfil from "./components/ConsultarPerfil/ConsultarPerfil";
 import ConsultarEmpresa from "./components/ConsultarEmpresa/ConsultarEmpresa";
 import Faq from "./components/ConsultarFAQ/Faq";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
