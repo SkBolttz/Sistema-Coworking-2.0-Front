@@ -187,12 +187,20 @@ body {
     z-index: 999;
 }
 
-/* RESPONSIVIDADE */
-
 @media (max-width: 768px) {
     .formContainer {
         padding: 2rem;
         max-width: 95%;
+    }
+
+    .title {
+        font-size: 2rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
     }
 
     .formRow {
@@ -200,42 +208,48 @@ body {
         gap: 0;
     }
 
+    .inputGroup {
+        margin-bottom: 1rem;
+    }
+
     .buttonGroup {
         flex-direction: column;
         gap: 0.8rem;
+        margin-top: 1.5rem;
     }
 
     .submitButton,
     .returnButton {
         width: 100%;
-        padding: 1rem;
+        padding: 0.9rem;
     }
 }
 
 @media (max-width: 480px) {
+    .formContainer {
+        padding: 1.5rem 1rem;
+    }
+
     .title {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
     }
 
     .subtitle {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
     }
 
     .inputGroup input[type="text"],
     .inputGroup input[type="email"],
     .inputGroup input[type="password"],
     .inputGroup input[type="file"] {
-        font-size: 0.95rem;
-        padding: 0.7rem 0.9rem;
+        font-size: 0.9rem;
+        padding: 0.6rem 0.8rem;
     }
 
     .submitButton,
     .returnButton {
-        font-size: 1rem;
+        font-size: 0.95rem;
         padding: 0.7rem 1rem;
-    }
-
-    .formContainer {
-        padding: 1.5rem 1.5rem;
     }
 }
