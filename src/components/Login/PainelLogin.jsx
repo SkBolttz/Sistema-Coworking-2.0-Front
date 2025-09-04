@@ -33,14 +33,24 @@ function PainelLogin() {
       setDadosVazios(false);
       setLoading(true);
 
-      const resposta = await axios.post("https://sistema-coworking-20-production.up.railway.app/auth/login", {
-        cpf,
-        senha,
-      });
+      const resposta = await axios.post(
+        "https://sistema-coworking-20-production.up.railway.app/auth/login",
+        { cpf, senha },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const respostaEmail = await axios.post(
         "https://sistema-coworking-20-production.up.railway.app/visitante/verificarEmail",
         { cpf },
+        {
+          headers: {
+            Authorization: `Bearer ${resposta.data.token}`,
+          },
+        }
       );
 
       localStorage.setItem("cpf", cpf);
@@ -85,7 +95,12 @@ function PainelLogin() {
 
           <div className={style.inputGroup}>
             <label htmlFor="senha">Senha</label>
-            <input id="senha" type="password" placeholder="******"  maxLength={8}/>
+            <input
+              id="senha"
+              type="password"
+              placeholder="******"
+              maxLength={40}
+            />
           </div>
 
           {erroLogin && (
